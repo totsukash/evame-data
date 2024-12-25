@@ -2,8 +2,13 @@ import os
 import re
 
 def is_number(s):
-    """文字列が数字かどうかをチェック"""
-    return s.isdigit()
+    """文字列が数字かK+数字かどうかをチェック"""
+    if s.isdigit():
+        return True
+    # Kで始まり、残りが数字の場合もTrue
+    if s.startswith('K') and s[1:].isdigit():
+        return True
+    return False
 
 def process_frontmatter(content):
     """Frontmatterを処理してタグを更新"""
